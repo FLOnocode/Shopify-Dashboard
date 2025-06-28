@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PriorityBadge from './PriorityBadge';
 import { ShopifyEvent } from '../../types/dashboard';
@@ -38,12 +37,12 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const timeAgo = getTimeAgo(event.timestamp);
 
   return (
-    <div className="group relative p-4 bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-lg hover:border-slate-700 hover:bg-slate-900/60 transition-all duration-300 cursor-pointer">
+    <div className="group relative p-4 bg-white border border-gray-200 dark:bg-slate-900/40 dark:border-slate-800 rounded-lg hover:border-gray-300 hover:bg-gray-50 dark:hover:border-slate-700 dark:hover:bg-slate-900/60 transition-all duration-300 cursor-pointer backdrop-blur-sm">
       {/* Priority Indicator */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-lg ${
         event.priority === 'critical' ? 'bg-red-500' :
         event.priority === 'high' ? 'bg-yellow-500' : 
-        event.priority === 'normal' ? 'bg-green-500' : 'bg-slate-500'
+        event.priority === 'normal' ? 'bg-green-500' : 'bg-gray-400 dark:bg-slate-500'
       }`} />
 
       <div className="flex items-start gap-4 pl-3">
@@ -56,26 +55,26 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <div className="flex-1">
-              <h4 className="font-medium text-white group-hover:text-cyan-400 transition-colors duration-200 truncate">
+              <h4 className="font-medium text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-cyan-400 transition-colors duration-200 truncate">
                 {event.title}
               </h4>
-              <p className="text-sm text-slate-400 mt-1 line-clamp-2">
+              <p className="text-sm text-gray-600 dark:text-slate-400 mt-1 line-clamp-2">
                 {event.description}
               </p>
             </div>
             <div className="flex items-center gap-2 flex-shrink-0">
               <PriorityBadge priority={event.priority} />
-              <span className="text-xs text-slate-500">{timeAgo}</span>
+              <span className="text-xs text-gray-500 dark:text-slate-500">{timeAgo}</span>
             </div>
           </div>
 
           {/* Metadata */}
           {event.metadata && (
-            <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
+            <div className="mt-3 flex items-center gap-4 text-xs text-gray-500 dark:text-slate-500">
               {Object.entries(event.metadata).slice(0, 3).map(([key, value]) => (
                 <span key={key} className="flex items-center gap-1">
                   <span className="capitalize">{key}:</span>
-                  <span className="text-slate-400 font-medium">{String(value)}</span>
+                  <span className="text-gray-600 dark:text-slate-400 font-medium">{String(value)}</span>
                 </span>
               ))}
             </div>
@@ -84,7 +83,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
       </div>
 
       {/* Hover Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-blue-500/5 dark:from-cyan-500/5 dark:to-blue-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </div>
   );
 };

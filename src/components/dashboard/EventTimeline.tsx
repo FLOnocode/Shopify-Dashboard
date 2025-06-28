@@ -1,4 +1,3 @@
-
 import React from 'react';
 import EventCard from './EventCard';
 import { DashboardFilters, ShopifyEvent } from '../../types/dashboard';
@@ -76,17 +75,17 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ filters }) => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-          <span className="text-sm text-slate-400">
+          <span className="text-sm text-gray-600 dark:text-slate-400">
             {filteredEvents.length} événement(s) • Mise à jour temps réel
           </span>
         </div>
-        <div className="text-xs text-slate-500">
+        <div className="text-xs text-gray-500 dark:text-slate-500">
           Dernière sync: {new Date().toLocaleTimeString()}
         </div>
       </div>
 
       {/* Events List */}
-      <div className="space-y-3 max-h-96 overflow-y-auto scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-600">
+      <div className="space-y-3 max-h-96 overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:scrollbar-track-slate-800 dark:scrollbar-thumb-slate-600">
         {filteredEvents.map((event, index) => (
           <div
             key={event.id}
@@ -98,7 +97,7 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ filters }) => {
         ))}
         
         {filteredEvents.length === 0 && (
-          <div className="text-center py-12 text-slate-500">
+          <div className="text-center py-12 text-gray-500 dark:text-slate-500">
             <Package className="w-12 h-12 mx-auto mb-4 opacity-50" />
             <p>Aucun événement ne correspond aux filtres sélectionnés</p>
           </div>

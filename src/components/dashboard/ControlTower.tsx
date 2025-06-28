@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { TrendingUp, TrendingDown, DollarSign, ShoppingCart, Users, Package } from 'lucide-react';
 import { DashboardFilters } from '../../types/dashboard';
@@ -48,11 +47,11 @@ const ControlTower: React.FC<ControlTowerProps> = ({ filters }) => {
       {metrics.map((metric, index) => (
         <div
           key={metric.title}
-          className="group relative p-6 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl hover:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10"
+          className="group relative p-6 bg-white border border-gray-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-xl hover:border-gray-300 dark:hover:border-slate-700 transition-all duration-300 hover:shadow-lg dark:hover:shadow-2xl dark:hover:shadow-cyan-500/10 backdrop-blur-sm"
           style={{ animationDelay: `${index * 100}ms` }}
         >
           {/* Background Gradient */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${metric.gradient} opacity-5 rounded-xl group-hover:opacity-10 transition-opacity duration-300`} />
+          <div className={`absolute inset-0 bg-gradient-to-br ${metric.gradient} opacity-5 dark:opacity-5 rounded-xl group-hover:opacity-10 transition-opacity duration-300`} />
           
           {/* Content */}
           <div className="relative z-10">
@@ -61,7 +60,7 @@ const ControlTower: React.FC<ControlTowerProps> = ({ filters }) => {
                 <metric.icon className="w-6 h-6 text-white" />
               </div>
               <div className={`flex items-center gap-1 text-sm font-medium ${
-                metric.trend === 'up' ? 'text-green-400' : 'text-red-400'
+                metric.trend === 'up' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
               }`}>
                 {metric.trend === 'up' ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
                 {metric.change}
@@ -69,8 +68,8 @@ const ControlTower: React.FC<ControlTowerProps> = ({ filters }) => {
             </div>
             
             <div className="space-y-1">
-              <h3 className="text-sm font-medium text-slate-400">{metric.title}</h3>
-              <p className="text-2xl font-bold text-white">{metric.value}</p>
+              <h3 className="text-sm font-medium text-gray-600 dark:text-slate-400">{metric.title}</h3>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{metric.value}</p>
             </div>
 
             {/* Mini sparkline placeholder */}

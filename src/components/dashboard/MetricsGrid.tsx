@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
 import { DashboardFilters } from '../../types/dashboard';
@@ -35,10 +34,10 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
   return (
     <div className="space-y-6">
       {/* Sales Trend */}
-      <div className="p-6 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl">
-        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+      <div className="p-6 bg-white border border-gray-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-xl backdrop-blur-sm">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
           📈 Évolution des ventes
-          <span className="text-sm text-slate-400 font-normal">(24h)</span>
+          <span className="text-sm text-gray-600 dark:text-slate-400 font-normal">(24h)</span>
         </h3>
         <div className="h-32">
           <ResponsiveContainer width="100%" height="100%">
@@ -60,11 +59,13 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
               <YAxis hide />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
+                  backgroundColor: 'white',
+                  border: '1px solid #e2e8f0',
                   borderRadius: '8px',
-                  color: '#f1f5f9'
+                  color: '#1f2937',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
                 }}
+                labelStyle={{ color: '#374151' }}
               />
             </AreaChart>
           </ResponsiveContainer>
@@ -72,8 +73,8 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
       </div>
 
       {/* Categories Distribution */}
-      <div className="p-6 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl">
-        <h3 className="text-lg font-semibold text-white mb-4">🎯 Répartition par catégorie</h3>
+      <div className="p-6 bg-white border border-gray-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-xl backdrop-blur-sm">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">🎯 Répartition par catégorie</h3>
         <div className="h-40">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -92,10 +93,11 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
               </Pie>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
+                  backgroundColor: 'white',
+                  border: '1px solid #e2e8f0',
                   borderRadius: '8px',
-                  color: '#f1f5f9'
+                  color: '#1f2937',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
                 }}
               />
             </PieChart>
@@ -108,16 +110,16 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: item.color }}
               />
-              <span className="text-slate-300">{item.name}</span>
-              <span className="text-slate-400 ml-auto">{item.value}%</span>
+              <span className="text-gray-700 dark:text-slate-300">{item.name}</span>
+              <span className="text-gray-500 dark:text-slate-400 ml-auto">{item.value}%</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Order Status */}
-      <div className="p-6 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl">
-        <h3 className="text-lg font-semibold text-white mb-4">📦 Statut des commandes</h3>
+      <div className="p-6 bg-white border border-gray-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-xl backdrop-blur-sm">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">📦 Statut des commandes</h3>
         <div className="h-32">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={orderStatusData} layout="horizontal">
@@ -126,10 +128,11 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
               <Bar dataKey="count" fill="#8b5cf6" radius={[0, 4, 4, 0]} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
+                  backgroundColor: 'white',
+                  border: '1px solid #e2e8f0',
                   borderRadius: '8px',
-                  color: '#f1f5f9'
+                  color: '#1f2937',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
                 }}
               />
             </BarChart>
@@ -138,8 +141,8 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
       </div>
 
       {/* Quick Actions */}
-      <div className="p-6 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl">
-        <h3 className="text-lg font-semibold text-white mb-4">⚡ Actions rapides</h3>
+      <div className="p-6 bg-white border border-gray-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-xl backdrop-blur-sm">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">⚡ Actions rapides</h3>
         <div className="grid grid-cols-1 gap-3">
           {[
             { label: 'Exporter les données', action: '📊' },
@@ -148,10 +151,10 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({ filters }) => {
           ].map((item) => (
             <button
               key={item.label}
-              className="flex items-center gap-3 p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg transition-colors duration-200 text-left"
+              className="flex items-center gap-3 p-3 bg-gray-50 hover:bg-gray-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 rounded-lg transition-colors duration-200 text-left"
             >
               <span className="text-lg">{item.action}</span>
-              <span className="text-slate-300">{item.label}</span>
+              <span className="text-gray-700 dark:text-slate-300">{item.label}</span>
             </button>
           ))}
         </div>
