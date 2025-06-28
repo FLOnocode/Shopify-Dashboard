@@ -13,7 +13,8 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ filters }) => {
   const events: ShopifyEvent[] = [
     {
       id: '1',
-      type: 'order',
+      type: 'orders',
+      subtype: 'create',
       title: 'Nouvelle commande #SO-2024-001',
       description: 'Commande de €234.99 - iPhone 15 Pro Max',
       priority: 'normal',
@@ -23,6 +24,7 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ filters }) => {
     {
       id: '2',
       type: 'inventory',
+      subtype: 'levels_update',
       title: 'Stock critique - iPhone 15 Pro',
       description: 'Plus que 3 unités en stock',
       priority: 'critical',
@@ -31,7 +33,8 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ filters }) => {
     },
     {
       id: '3',
-      type: 'customer',
+      type: 'customers',
+      subtype: 'create',
       title: 'Nouveau client VIP',
       description: 'Client avec historique d\'achat élevé',
       priority: 'high',
@@ -40,7 +43,8 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ filters }) => {
     },
     {
       id: '4',
-      type: 'refund',
+      type: 'refunds',
+      subtype: 'create',
       title: 'Demande de remboursement',
       description: 'Remboursement partiel de €45.00',
       priority: 'normal',
@@ -49,7 +53,8 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ filters }) => {
     },
     {
       id: '5',
-      type: 'order',
+      type: 'orders',
+      subtype: 'fulfilled',
       title: 'Commande expédiée #SO-2023-998',
       description: 'Tracking: FR123456789',
       priority: 'normal',
