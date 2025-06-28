@@ -2,6 +2,7 @@
 import React from 'react';
 import EventCard from './EventCard';
 import { DashboardFilters, ShopifyEvent } from '../../types/dashboard';
+import { Package } from 'lucide-react';
 
 interface EventTimelineProps {
   filters: DashboardFilters;

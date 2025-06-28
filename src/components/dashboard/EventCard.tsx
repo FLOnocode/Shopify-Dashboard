@@ -2,7 +2,7 @@
 import React from 'react';
 import PriorityBadge from './PriorityBadge';
 import { ShopifyEvent } from '../../types/dashboard';
-import { ShoppingCart, Users, Package, DollarSign, Clock } from 'lucide-react';
+import { ShoppingCart, Users, Package, DollarSign, ShoppingBag, Archive } from 'lucide-react';
 
 interface EventCardProps {
   event: ShopifyEvent;
@@ -11,20 +11,24 @@ interface EventCardProps {
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const getEventIcon = (type: string) => {
     switch (type) {
-      case 'order': return ShoppingCart;
-      case 'customer': return Users;
-      case 'inventory': return Package;
-      case 'refund': return DollarSign;
-      default: return Clock;
+      case 'orders': return ShoppingCart;
+      case 'customers': return Users;
+      case 'products': return Package;
+      case 'refunds': return DollarSign;
+      case 'checkouts': return ShoppingBag;
+      case 'inventory': return Archive;
+      default: return Package;
     }
   };
 
   const getEventColor = (type: string) => {
     switch (type) {
-      case 'order': return 'from-blue-400 to-cyan-600';
-      case 'customer': return 'from-purple-400 to-violet-600';
+      case 'orders': return 'from-blue-400 to-cyan-600';
+      case 'customers': return 'from-purple-400 to-violet-600';
+      case 'products': return 'from-green-400 to-emerald-600';
+      case 'refunds': return 'from-yellow-400 to-orange-600';
+      case 'checkouts': return 'from-pink-400 to-rose-600';
       case 'inventory': return 'from-orange-400 to-red-600';
-      case 'refund': return 'from-yellow-400 to-orange-600';
       default: return 'from-gray-400 to-slate-600';
     }
   };
@@ -38,7 +42,8 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
       {/* Priority Indicator */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-lg ${
         event.priority === 'critical' ? 'bg-red-500' :
-        event.priority === 'high' ? 'bg-yellow-500' : 'bg-green-500'
+        event.priority === 'high' ? 'bg-yellow-500' : 
+        event.priority === 'normal' ? 'bg-green-500' : 'bg-slate-500'
       }`} />
 
       <div className="flex items-start gap-4 pl-3">

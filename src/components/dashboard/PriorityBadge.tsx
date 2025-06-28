@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { AlertTriangle, AlertCircle, CheckCircle } from 'lucide-react';
+import { AlertTriangle, AlertCircle, CheckCircle, Minus } from 'lucide-react';
 
 interface PriorityBadgeProps {
-  priority: 'critical' | 'high' | 'normal';
+  priority: 'critical' | 'high' | 'normal' | 'low';
   size?: 'sm' | 'md';
 }
 
@@ -26,6 +26,12 @@ const PriorityBadge: React.FC<PriorityBadgeProps> = ({ priority, size = 'sm' }) 
       label: 'Normale',
       className: 'bg-green-500/20 text-green-400 border-green-500/30',
       glowClass: 'shadow-green-500/25'
+    },
+    low: {
+      icon: Minus,
+      label: 'Faible',
+      className: 'bg-slate-500/20 text-slate-400 border-slate-500/30',
+      glowClass: 'shadow-slate-500/25'
     }
   };
 
